@@ -17,6 +17,7 @@ func MySideBar() *fyne.Container {
 	return sidebar
 }
 
+// A placeholder function
 func helloWorld() {
 	fmt.Println("Hello World")
 }
