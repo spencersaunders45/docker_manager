@@ -22,9 +22,10 @@ func main() {
 	// Create the widgets
 	var sidebar *fyne.Container = my_widgets.MySideBar()
 	var toolbar *widget.Toolbar = my_widgets.MyToolBar(sidebar)
+	var docker_images *fyne.Container = my_widgets.DockerImageList()
 
 	// Add the widgets to the window
-	main_grid := container.New(layout.NewGridLayout(7), sidebar)
+	main_grid := container.New(layout.NewGridLayout(7), sidebar, docker_images)
 	boarder_items := container.NewBorder(toolbar, nil, nil, nil, main_grid)
 	myWindow.SetContent(boarder_items)
 	myWindow.ShowAndRun()
