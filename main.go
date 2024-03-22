@@ -20,13 +20,14 @@ func main() {
 	myWindow := myApp.NewWindow("Docker Manager")
 
 	// Create the widgets
-	var sidebar *fyne.Container = my_widgets.MySideBar()
-	var toolbar *widget.Toolbar = my_widgets.MyToolBar(sidebar)
 	var docker_images *fyne.Container = my_widgets.DockerImageList()
+	var sidebar *fyne.Container = my_widgets.MySideBar(docker_images)
+	var toolbar *widget.Toolbar = my_widgets.MyToolBar(sidebar)
 
 	// Add the widgets to the window
-	main_grid := container.New(layout.NewGridLayout(7), sidebar, docker_images)
-	boarder_items := container.NewBorder(toolbar, nil, nil, nil, main_grid)
+	main_grid := container.New(layout.NewGridLayout(1), docker_images)
+	boarder_items := container.NewBorder(toolbar, nil, sidebar, main_grid)
 	myWindow.SetContent(boarder_items)
+	myWindow.Resize(fyne.NewSize(400,400))
 	myWindow.ShowAndRun()
 }
